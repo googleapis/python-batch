@@ -33,15 +33,11 @@ except AttributeError:  # pragma: NO COVER
 
 from google.api_core import operation  # type: ignore
 from google.api_core import operation_async  # type: ignore
-from google.cloud.batch_v1.services.batch_service import pagers
-from google.cloud.batch_v1.types import batch
-from google.cloud.batch_v1.types import job
-from google.cloud.batch_v1.types import job as gcb_job
-from google.cloud.batch_v1.types import task
-from google.cloud.location import locations_pb2  # type: ignore
-from google.iam.v1 import iam_policy_pb2  # type: ignore
-from google.iam.v1 import policy_pb2  # type: ignore
-from google.longrunning import operations_pb2
+from google.cloud.batch_v1alpha.services.batch_service import pagers
+from google.cloud.batch_v1alpha.types import batch
+from google.cloud.batch_v1alpha.types import job
+from google.cloud.batch_v1alpha.types import job as gcb_job
+from google.cloud.batch_v1alpha.types import task
 from google.protobuf import empty_pb2  # type: ignore
 from google.protobuf import timestamp_pb2  # type: ignore
 from .transports.base import BatchServiceTransport, DEFAULT_CLIENT_INFO
@@ -231,14 +227,14 @@ class BatchServiceAsyncClient:
 
         .. code-block:: python
 
-            from google.cloud import batch_v1
+            from google.cloud import batch_v1alpha
 
             async def sample_create_job():
                 # Create a client
-                client = batch_v1.BatchServiceAsyncClient()
+                client = batch_v1alpha.BatchServiceAsyncClient()
 
                 # Initialize request argument(s)
-                request = batch_v1.CreateJobRequest(
+                request = batch_v1alpha.CreateJobRequest(
                     parent="parent_value",
                 )
 
@@ -249,7 +245,7 @@ class BatchServiceAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.batch_v1.types.CreateJobRequest, dict]):
+            request (Union[google.cloud.batch_v1alpha.types.CreateJobRequest, dict]):
                 The request object. CreateJob Request.
             parent (:class:`str`):
                 Required. The parent resource name
@@ -259,7 +255,7 @@ class BatchServiceAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            job (:class:`google.cloud.batch_v1.types.Job`):
+            job (:class:`google.cloud.batch_v1alpha.types.Job`):
                 Required. The Job to create.
                 This corresponds to the ``job`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -286,7 +282,7 @@ class BatchServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.batch_v1.types.Job:
+            google.cloud.batch_v1alpha.types.Job:
                 The Cloud Batch Job description.
         """
         # Create or coerce a protobuf request object.
@@ -348,14 +344,14 @@ class BatchServiceAsyncClient:
 
         .. code-block:: python
 
-            from google.cloud import batch_v1
+            from google.cloud import batch_v1alpha
 
             async def sample_get_job():
                 # Create a client
-                client = batch_v1.BatchServiceAsyncClient()
+                client = batch_v1alpha.BatchServiceAsyncClient()
 
                 # Initialize request argument(s)
-                request = batch_v1.GetJobRequest(
+                request = batch_v1alpha.GetJobRequest(
                     name="name_value",
                 )
 
@@ -366,7 +362,7 @@ class BatchServiceAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.batch_v1.types.GetJobRequest, dict]):
+            request (Union[google.cloud.batch_v1alpha.types.GetJobRequest, dict]):
                 The request object. GetJob Request.
             name (:class:`str`):
                 Required. Job name.
@@ -380,7 +376,7 @@ class BatchServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.batch_v1.types.Job:
+            google.cloud.batch_v1alpha.types.Job:
                 The Cloud Batch Job description.
         """
         # Create or coerce a protobuf request object.
@@ -447,14 +443,14 @@ class BatchServiceAsyncClient:
 
         .. code-block:: python
 
-            from google.cloud import batch_v1
+            from google.cloud import batch_v1alpha
 
             async def sample_delete_job():
                 # Create a client
-                client = batch_v1.BatchServiceAsyncClient()
+                client = batch_v1alpha.BatchServiceAsyncClient()
 
                 # Initialize request argument(s)
-                request = batch_v1.DeleteJobRequest(
+                request = batch_v1alpha.DeleteJobRequest(
                 )
 
                 # Make the request
@@ -468,7 +464,7 @@ class BatchServiceAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.batch_v1.types.DeleteJobRequest, dict]):
+            request (Union[google.cloud.batch_v1alpha.types.DeleteJobRequest, dict]):
                 The request object. DeleteJob Request.
             name (:class:`str`):
                 Job name.
@@ -560,14 +556,14 @@ class BatchServiceAsyncClient:
 
         .. code-block:: python
 
-            from google.cloud import batch_v1
+            from google.cloud import batch_v1alpha
 
             async def sample_list_jobs():
                 # Create a client
-                client = batch_v1.BatchServiceAsyncClient()
+                client = batch_v1alpha.BatchServiceAsyncClient()
 
                 # Initialize request argument(s)
-                request = batch_v1.ListJobsRequest(
+                request = batch_v1alpha.ListJobsRequest(
                 )
 
                 # Make the request
@@ -578,7 +574,7 @@ class BatchServiceAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.batch_v1.types.ListJobsRequest, dict]):
+            request (Union[google.cloud.batch_v1alpha.types.ListJobsRequest, dict]):
                 The request object. ListJob Request.
             parent (:class:`str`):
                 Parent path.
@@ -592,7 +588,7 @@ class BatchServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.batch_v1.services.batch_service.pagers.ListJobsAsyncPager:
+            google.cloud.batch_v1alpha.services.batch_service.pagers.ListJobsAsyncPager:
                 ListJob Response.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -672,14 +668,14 @@ class BatchServiceAsyncClient:
 
         .. code-block:: python
 
-            from google.cloud import batch_v1
+            from google.cloud import batch_v1alpha
 
             async def sample_get_task():
                 # Create a client
-                client = batch_v1.BatchServiceAsyncClient()
+                client = batch_v1alpha.BatchServiceAsyncClient()
 
                 # Initialize request argument(s)
-                request = batch_v1.GetTaskRequest(
+                request = batch_v1alpha.GetTaskRequest(
                     name="name_value",
                 )
 
@@ -690,7 +686,7 @@ class BatchServiceAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.batch_v1.types.GetTaskRequest, dict]):
+            request (Union[google.cloud.batch_v1alpha.types.GetTaskRequest, dict]):
                 The request object. Request for a single Task by name.
             name (:class:`str`):
                 Required. Task name.
@@ -704,7 +700,7 @@ class BatchServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.batch_v1.types.Task:
+            google.cloud.batch_v1alpha.types.Task:
                 A Cloud Batch task.
         """
         # Create or coerce a protobuf request object.
@@ -771,14 +767,14 @@ class BatchServiceAsyncClient:
 
         .. code-block:: python
 
-            from google.cloud import batch_v1
+            from google.cloud import batch_v1alpha
 
             async def sample_list_tasks():
                 # Create a client
-                client = batch_v1.BatchServiceAsyncClient()
+                client = batch_v1alpha.BatchServiceAsyncClient()
 
                 # Initialize request argument(s)
-                request = batch_v1.ListTasksRequest(
+                request = batch_v1alpha.ListTasksRequest(
                     parent="parent_value",
                 )
 
@@ -790,7 +786,7 @@ class BatchServiceAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.batch_v1.types.ListTasksRequest, dict]):
+            request (Union[google.cloud.batch_v1alpha.types.ListTasksRequest, dict]):
                 The request object. ListTasks Request.
             parent (:class:`str`):
                 Required. Name of a TaskGroup from which Tasks are being
@@ -807,7 +803,7 @@ class BatchServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.batch_v1.services.batch_service.pagers.ListTasksAsyncPager:
+            google.cloud.batch_v1alpha.services.batch_service.pagers.ListTasksAsyncPager:
                 ListTasks Response.
                 Iterating over this object will yield
                 results and resolve additional pages
