@@ -208,6 +208,7 @@ def _session_tests(
     session: nox.sessions.Session, post_install: Callable = None
 ) -> None:
     # check for presence of tests
+    print(f"We are here: {os.getcwd()}")
     test_list = glob.glob("*_test.py") + glob.glob("test_*.py")
     test_list.extend(glob.glob("tests"))
 
