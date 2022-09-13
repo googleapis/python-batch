@@ -210,6 +210,8 @@ def _session_tests(
     # check for presence of tests
     test_list = glob.glob("*_test.py") + glob.glob("test_*.py")
     test_list.extend(glob.glob("tests"))
+    print("Here's what we have: ", glob.glob("**", recursive=True))
+
 
     if len(test_list) == 0:
         print("No tests found, skipping directory.")
