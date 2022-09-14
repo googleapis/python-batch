@@ -11,8 +11,10 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
+import random
 import time
 import uuid
+
 
 import google.auth
 from google.cloud import batch_v1
@@ -53,7 +55,7 @@ def _test_body(job: batch_v1.Job):
                 pytest.fail("Timed out while waiting for job to complete!")
             job = get_job(PROJECT, REGION, job.name.rsplit('/', maxsplit=1)[1])
             time.sleep(5)
-        time.sleep(15)  # Let the logging properly register all messages
+        time.sleep(15*random.random()+5)  # Let the logging properly register all messages
         logger = logging_client.logger("batch_task_logs", labels={'job_uid': job.uid})
         tasks_done = 0
         for entry in logger.list_entries():
