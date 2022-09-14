@@ -56,7 +56,7 @@ def _test_body(job: batch_v1.Job):
             job = get_job(PROJECT, REGION, job.name.rsplit('/', maxsplit=1)[1])
             time.sleep(5)
 
-        assert job.status.state == batch_v1.JobStatus.State.SUCCEEDED
+        assert job.status.state in (batch_v1.JobStatus.State.SUCCEEDED, batch_v1.JobStatus.State.DELETION_IN_PROGRESS)
 
         for job in list_jobs(PROJECT, REGION):
             if job.uid == job.uid:
