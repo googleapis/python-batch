@@ -53,7 +53,7 @@ def _test_body(job: batch_v1.Job):
                 pytest.fail("Timed out while waiting for job to complete!")
             job = get_job(PROJECT, REGION, job.name.rsplit('/', maxsplit=1)[1])
             time.sleep(5)
-
+        time.sleep(15)  # Let the logging properly register all messages
         logger = logging_client.logger("batch_task_logs", labels={'job_uid': job.uid})
         tasks_done = 0
         for entry in logger.list_entries():
