@@ -55,15 +55,8 @@ def _test_body(job: batch_v1.Job):
                 pytest.fail("Timed out while waiting for job to complete!")
             job = get_job(PROJECT, REGION, job.name.rsplit('/', maxsplit=1)[1])
             time.sleep(5)
-        time.sleep(15*random.random()+5)  # Let the logging properly register all messages
-        logger = logging_client.logger("batch_task_logs", labels={'job_uid': job.uid})
-        tasks_done = 0
-        for entry in logger.list_entries():
-            if entry.labels['job_uid'] != job.uid:
-                continue
-            if "Hello world! This is task" in entry.payload:
-                tasks_done += 1
-        assert (tasks_done == 4)
+
+        assert job.status.state == batch_v1.JobStatus.State.SUCCEEDED
 
         for job in list_jobs(PROJECT, REGION):
             if job.uid == job.uid:
