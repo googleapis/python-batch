@@ -30,7 +30,7 @@ from google.protobuf import json_format
 from google.api_core import operations_v1
 from google.iam.v1 import iam_policy_pb2  # type: ignore
 from google.iam.v1 import policy_pb2  # type: ignore
-from google.cloud.location import locations_pb2 # type: ignore
+from google.cloud.location import locations_pb2  # type: ignore
 from google.longrunning import operations_pb2
 from requests import __version__ as requests_version
 import dataclasses
@@ -44,10 +44,10 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.batch_v1alpha.types import batch
-from google.cloud.batch_v1alpha.types import job
-from google.cloud.batch_v1alpha.types import job as gcb_job
-from google.cloud.batch_v1alpha.types import task
+from google.cloud.batch_v1.types import batch
+from google.cloud.batch_v1.types import job
+from google.cloud.batch_v1.types import job as gcb_job
+from google.cloud.batch_v1.types import task
 from google.longrunning import operations_pb2  # type: ignore
 
 from .base import BatchServiceTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
@@ -122,7 +122,10 @@ class BatchServiceRestInterceptor:
 
 
     """
-    def pre_create_job(self, request: batch.CreateJobRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[batch.CreateJobRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_job(
+        self, request: batch.CreateJobRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[batch.CreateJobRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_job
 
         Override in a subclass to manipulate the request or metadata
@@ -138,7 +141,10 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_job(self, request: batch.DeleteJobRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[batch.DeleteJobRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_job(
+        self, request: batch.DeleteJobRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[batch.DeleteJobRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_job
 
         Override in a subclass to manipulate the request or metadata
@@ -146,7 +152,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_delete_job(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_delete_job(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for delete_job
 
         Override in a subclass to manipulate the response
@@ -154,7 +162,10 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_job(self, request: batch.GetJobRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[batch.GetJobRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_job(
+        self, request: batch.GetJobRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[batch.GetJobRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_job
 
         Override in a subclass to manipulate the request or metadata
@@ -170,7 +181,10 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_task(self, request: batch.GetTaskRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[batch.GetTaskRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_task(
+        self, request: batch.GetTaskRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[batch.GetTaskRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_task
 
         Override in a subclass to manipulate the request or metadata
@@ -186,7 +200,10 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_jobs(self, request: batch.ListJobsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[batch.ListJobsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_jobs(
+        self, request: batch.ListJobsRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[batch.ListJobsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_jobs
 
         Override in a subclass to manipulate the request or metadata
@@ -194,7 +211,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_list_jobs(self, response: batch.ListJobsResponse) -> batch.ListJobsResponse:
+    def post_list_jobs(
+        self, response: batch.ListJobsResponse
+    ) -> batch.ListJobsResponse:
         """Post-rpc interceptor for list_jobs
 
         Override in a subclass to manipulate the response
@@ -202,7 +221,10 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_tasks(self, request: batch.ListTasksRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[batch.ListTasksRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_tasks(
+        self, request: batch.ListTasksRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[batch.ListTasksRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_tasks
 
         Override in a subclass to manipulate the request or metadata
@@ -210,7 +232,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_list_tasks(self, response: batch.ListTasksResponse) -> batch.ListTasksResponse:
+    def post_list_tasks(
+        self, response: batch.ListTasksResponse
+    ) -> batch.ListTasksResponse:
         """Post-rpc interceptor for list_tasks
 
         Override in a subclass to manipulate the response
@@ -219,7 +243,11 @@ class BatchServiceRestInterceptor:
         """
         return response
 
-    def pre_get_location(self, request: locations_pb2.GetLocationRequest, metadata: Sequence[Tuple[str, str]]) -> locations_pb2.Location:
+    def pre_get_location(
+        self,
+        request: locations_pb2.GetLocationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> locations_pb2.Location:
         """Pre-rpc interceptor for get_location
 
         Override in a subclass to manipulate the request or metadata
@@ -227,7 +255,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_get_location(self, response: locations_pb2.GetLocationRequest) -> locations_pb2.Location:
+    def post_get_location(
+        self, response: locations_pb2.GetLocationRequest
+    ) -> locations_pb2.Location:
         """Post-rpc interceptor for get_location
 
         Override in a subclass to manipulate the response
@@ -235,7 +265,12 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_locations(self, request: locations_pb2.ListLocationsRequest, metadata: Sequence[Tuple[str, str]]) -> locations_pb2.ListLocationsResponse:
+
+    def pre_list_locations(
+        self,
+        request: locations_pb2.ListLocationsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> locations_pb2.ListLocationsResponse:
         """Pre-rpc interceptor for list_locations
 
         Override in a subclass to manipulate the request or metadata
@@ -243,7 +278,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_list_locations(self, response: locations_pb2.ListLocationsRequest) -> locations_pb2.ListLocationsResponse:
+    def post_list_locations(
+        self, response: locations_pb2.ListLocationsRequest
+    ) -> locations_pb2.ListLocationsResponse:
         """Post-rpc interceptor for list_locations
 
         Override in a subclass to manipulate the response
@@ -251,7 +288,12 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_iam_policy(self, request: iam_policy_pb2.GetIamPolicyRequest, metadata: Sequence[Tuple[str, str]]) -> policy_pb2.Policy:
+
+    def pre_get_iam_policy(
+        self,
+        request: iam_policy_pb2.GetIamPolicyRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> policy_pb2.Policy:
         """Pre-rpc interceptor for get_iam_policy
 
         Override in a subclass to manipulate the request or metadata
@@ -259,7 +301,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_get_iam_policy(self, response: iam_policy_pb2.GetIamPolicyRequest) -> policy_pb2.Policy:
+    def post_get_iam_policy(
+        self, response: iam_policy_pb2.GetIamPolicyRequest
+    ) -> policy_pb2.Policy:
         """Post-rpc interceptor for get_iam_policy
 
         Override in a subclass to manipulate the response
@@ -267,7 +311,12 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_set_iam_policy(self, request: iam_policy_pb2.SetIamPolicyRequest, metadata: Sequence[Tuple[str, str]]) -> policy_pb2.Policy:
+
+    def pre_set_iam_policy(
+        self,
+        request: iam_policy_pb2.SetIamPolicyRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> policy_pb2.Policy:
         """Pre-rpc interceptor for set_iam_policy
 
         Override in a subclass to manipulate the request or metadata
@@ -275,7 +324,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_set_iam_policy(self, response: iam_policy_pb2.SetIamPolicyRequest) -> policy_pb2.Policy:
+    def post_set_iam_policy(
+        self, response: iam_policy_pb2.SetIamPolicyRequest
+    ) -> policy_pb2.Policy:
         """Post-rpc interceptor for set_iam_policy
 
         Override in a subclass to manipulate the response
@@ -283,7 +334,12 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_test_iam_permissions(self, request: iam_policy_pb2.TestIamPermissionsRequest, metadata: Sequence[Tuple[str, str]]) -> iam_policy_pb2.TestIamPermissionsResponse:
+
+    def pre_test_iam_permissions(
+        self,
+        request: iam_policy_pb2.TestIamPermissionsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> iam_policy_pb2.TestIamPermissionsResponse:
         """Pre-rpc interceptor for test_iam_permissions
 
         Override in a subclass to manipulate the request or metadata
@@ -291,7 +347,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_test_iam_permissions(self, response: iam_policy_pb2.TestIamPermissionsRequest) -> iam_policy_pb2.TestIamPermissionsResponse:
+    def post_test_iam_permissions(
+        self, response: iam_policy_pb2.TestIamPermissionsRequest
+    ) -> iam_policy_pb2.TestIamPermissionsResponse:
         """Post-rpc interceptor for test_iam_permissions
 
         Override in a subclass to manipulate the response
@@ -299,7 +357,12 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_cancel_operation(self, request: operations_pb2.CancelOperationRequest, metadata: Sequence[Tuple[str, str]]) -> None:
+
+    def pre_cancel_operation(
+        self,
+        request: operations_pb2.CancelOperationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> None:
         """Pre-rpc interceptor for cancel_operation
 
         Override in a subclass to manipulate the request or metadata
@@ -307,7 +370,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_cancel_operation(self, response: operations_pb2.CancelOperationRequest) -> None:
+    def post_cancel_operation(
+        self, response: operations_pb2.CancelOperationRequest
+    ) -> None:
         """Post-rpc interceptor for cancel_operation
 
         Override in a subclass to manipulate the response
@@ -315,7 +380,12 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_operation(self, request: operations_pb2.DeleteOperationRequest, metadata: Sequence[Tuple[str, str]]) -> None:
+
+    def pre_delete_operation(
+        self,
+        request: operations_pb2.DeleteOperationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> None:
         """Pre-rpc interceptor for delete_operation
 
         Override in a subclass to manipulate the request or metadata
@@ -323,7 +393,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_delete_operation(self, response: operations_pb2.DeleteOperationRequest) -> None:
+    def post_delete_operation(
+        self, response: operations_pb2.DeleteOperationRequest
+    ) -> None:
         """Post-rpc interceptor for delete_operation
 
         Override in a subclass to manipulate the response
@@ -331,7 +403,12 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_operation(self, request: operations_pb2.GetOperationRequest, metadata: Sequence[Tuple[str, str]]) -> operations_pb2.Operation:
+
+    def pre_get_operation(
+        self,
+        request: operations_pb2.GetOperationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> operations_pb2.Operation:
         """Pre-rpc interceptor for get_operation
 
         Override in a subclass to manipulate the request or metadata
@@ -339,7 +416,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_get_operation(self, response: operations_pb2.GetOperationRequest) -> operations_pb2.Operation:
+    def post_get_operation(
+        self, response: operations_pb2.GetOperationRequest
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for get_operation
 
         Override in a subclass to manipulate the response
@@ -347,7 +426,12 @@ class BatchServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_operations(self, request: operations_pb2.ListOperationsRequest, metadata: Sequence[Tuple[str, str]]) -> operations_pb2.ListOperationsResponse:
+
+    def pre_list_operations(
+        self,
+        request: operations_pb2.ListOperationsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> operations_pb2.ListOperationsResponse:
         """Pre-rpc interceptor for list_operations
 
         Override in a subclass to manipulate the request or metadata
@@ -355,7 +439,9 @@ class BatchServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_list_operations(self, response: operations_pb2.ListOperationsRequest) -> operations_pb2.ListOperationsResponse:
+    def post_list_operations(
+        self, response: operations_pb2.ListOperationsRequest
+    ) -> operations_pb2.ListOperationsResponse:
         """Post-rpc interceptor for list_operations
 
         Override in a subclass to manipulate the response
@@ -390,55 +476,56 @@ class BatchServiceRestTransport(BatchServiceTransport):
     library's source repository. Thank you!
     """
 
-    def __init__(self, *,
-            host: str = 'batch.googleapis.com',
-            credentials: ga_credentials.Credentials=None,
-            credentials_file: str=None,
-            scopes: Sequence[str]=None,
-            client_cert_source_for_mtls: Callable[[
-                ], Tuple[bytes, bytes]]=None,
-            quota_project_id: Optional[str]=None,
-            client_info: gapic_v1.client_info.ClientInfo=DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool]=False,
-            url_scheme: str='https',
-            interceptor: Optional[BatchServiceRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "batch.googleapis.com",
+        credentials: ga_credentials.Credentials = None,
+        credentials_file: str = None,
+        scopes: Sequence[str] = None,
+        client_cert_source_for_mtls: Callable[[], Tuple[bytes, bytes]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[BatchServiceRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
-       NOTE: This REST transport functionality is currently in a beta
-       state (preview). We welcome your feedback via a GitHub issue in
-       this library's repository. Thank you!
+        NOTE: This REST transport functionality is currently in a beta
+        state (preview). We welcome your feedback via a GitHub issue in
+        this library's repository. Thank you!
 
-        Args:
-            host (Optional[str]):
-                 The hostname to connect to.
-            credentials (Optional[google.auth.credentials.Credentials]): The
-                authorization credentials to attach to requests. These
-                credentials identify the application to the service; if none
-                are specified, the client will attempt to ascertain the
-                credentials from the environment.
+         Args:
+             host (Optional[str]):
+                  The hostname to connect to.
+             credentials (Optional[google.auth.credentials.Credentials]): The
+                 authorization credentials to attach to requests. These
+                 credentials identify the application to the service; if none
+                 are specified, the client will attempt to ascertain the
+                 credentials from the environment.
 
-            credentials_file (Optional[str]): A file with credentials that can
-                be loaded with :func:`google.auth.load_credentials_from_file`.
-                This argument is ignored if ``channel`` is provided.
-            scopes (Optional(Sequence[str])): A list of scopes. This argument is
-                ignored if ``channel`` is provided.
-            client_cert_source_for_mtls (Callable[[], Tuple[bytes, bytes]]): Client
-                certificate to configure mutual TLS HTTP channel. It is ignored
-                if ``channel`` is provided.
-            quota_project_id (Optional[str]): An optional project to use for billing
-                and quota.
-            client_info (google.api_core.gapic_v1.client_info.ClientInfo):
-                The client info used to send a user-agent string along with
-                API requests. If ``None``, then default info will be used.
-                Generally, you only need to set this if you are developing
-                your own client library.
-            always_use_jwt_access (Optional[bool]): Whether self signed JWT should
-                be used for service account credentials.
-            url_scheme: the protocol scheme for the API endpoint.  Normally
-                "https", but for testing or local servers,
-                "http" can be specified.
+             credentials_file (Optional[str]): A file with credentials that can
+                 be loaded with :func:`google.auth.load_credentials_from_file`.
+                 This argument is ignored if ``channel`` is provided.
+             scopes (Optional(Sequence[str])): A list of scopes. This argument is
+                 ignored if ``channel`` is provided.
+             client_cert_source_for_mtls (Callable[[], Tuple[bytes, bytes]]): Client
+                 certificate to configure mutual TLS HTTP channel. It is ignored
+                 if ``channel`` is provided.
+             quota_project_id (Optional[str]): An optional project to use for billing
+                 and quota.
+             client_info (google.api_core.gapic_v1.client_info.ClientInfo):
+                 The client info used to send a user-agent string along with
+                 API requests. If ``None``, then default info will be used.
+                 Generally, you only need to set this if you are developing
+                 your own client library.
+             always_use_jwt_access (Optional[bool]): Whether self signed JWT should
+                 be used for service account credentials.
+             url_scheme: the protocol scheme for the API endpoint.  Normally
+                 "https", but for testing or local servers,
+                 "http" can be specified.
         """
         # Run the base constructor
         # TODO(yon-mg): resolve other ctor params i.e. scopes, quota, etc.
@@ -446,7 +533,9 @@ class BatchServiceRestTransport(BatchServiceTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -457,10 +546,11 @@ class BatchServiceRestTransport(BatchServiceTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         self._operations_client: Optional[operations_v1.AbstractOperationsClient] = None
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
@@ -477,41 +567,44 @@ class BatchServiceRestTransport(BatchServiceTransport):
         # Only create a new client if we do not already have one.
         if self._operations_client is None:
             http_options: Dict[str, List[Dict[str, str]]] = {
-                'google.longrunning.Operations.CancelOperation': [
+                "google.longrunning.Operations.CancelOperation": [
                     {
-                        'method': 'post',
-                        'uri': '/v1alpha/{name=projects/*/locations/*/operations/*}:cancel',
-                        'body': '*',
+                        "method": "post",
+                        "uri": "/v1/{name=projects/*/locations/*/operations/*}:cancel",
+                        "body": "*",
                     },
                 ],
-                'google.longrunning.Operations.DeleteOperation': [
+                "google.longrunning.Operations.DeleteOperation": [
                     {
-                        'method': 'delete',
-                        'uri': '/v1alpha/{name=projects/*/locations/*/operations/*}',
+                        "method": "delete",
+                        "uri": "/v1/{name=projects/*/locations/*/operations/*}",
                     },
                 ],
-                'google.longrunning.Operations.GetOperation': [
+                "google.longrunning.Operations.GetOperation": [
                     {
-                        'method': 'get',
-                        'uri': '/v1alpha/{name=projects/*/locations/*/operations/*}',
+                        "method": "get",
+                        "uri": "/v1/{name=projects/*/locations/*/operations/*}",
                     },
                 ],
-                'google.longrunning.Operations.ListOperations': [
+                "google.longrunning.Operations.ListOperations": [
                     {
-                        'method': 'get',
-                        'uri': '/v1alpha/{name=projects/*/locations/*}/operations',
+                        "method": "get",
+                        "uri": "/v1/{name=projects/*/locations/*}/operations",
                     },
                 ],
             }
 
             rest_transport = operations_v1.OperationsRestTransport(
-                    host=self._host,
-                    # use the credentials which are saved
-                    credentials=self._credentials,
-                    scopes=self._scopes,
-                    http_options=http_options)
+                host=self._host,
+                # use the credentials which are saved
+                credentials=self._credentials,
+                scopes=self._scopes,
+                http_options=http_options,
+            )
 
-            self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
+            self._operations_client = operations_v1.AbstractOperationsClient(
+                transport=rest_transport
+            )
 
         # Return the client from cache.
         return self._operations_client
@@ -520,19 +613,24 @@ class BatchServiceRestTransport(BatchServiceTransport):
         def __hash__(self):
             return hash("CreateJob")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: batch.CreateJobRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> gcb_job.Job:
+        def __call__(
+            self,
+            request: batch.CreateJobRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> gcb_job.Job:
             r"""Call the create job method over HTTP.
 
             Args:
@@ -549,11 +647,12 @@ class BatchServiceRestTransport(BatchServiceTransport):
                     The Cloud Batch Job description.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1alpha/{parent=projects/*/locations/*}/jobs',
-                'body': 'job',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*}/jobs",
+                    "body": "job",
+                },
             ]
             request, metadata = self._interceptor.pre_create_job(request, metadata)
             pb_request = batch.CreateJobRequest.pb(request)
@@ -562,31 +661,33 @@ class BatchServiceRestTransport(BatchServiceTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=False,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -605,12 +706,14 @@ class BatchServiceRestTransport(BatchServiceTransport):
         def __hash__(self):
             return hash("DeleteJob")
 
-        def __call__(self,
-                request: batch.DeleteJobRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: batch.DeleteJobRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the delete job method over HTTP.
 
             Args:
@@ -630,34 +733,37 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1alpha/{name=projects/*/locations/*/jobs/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/locations/*/jobs/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_delete_job(request, metadata)
             pb_request = batch.DeleteJobRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -674,19 +780,24 @@ class BatchServiceRestTransport(BatchServiceTransport):
         def __hash__(self):
             return hash("GetJob")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: batch.GetJobRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> job.Job:
+        def __call__(
+            self,
+            request: batch.GetJobRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> job.Job:
             r"""Call the get job method over HTTP.
 
             Args:
@@ -703,35 +814,38 @@ class BatchServiceRestTransport(BatchServiceTransport):
                     The Cloud Batch Job description.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{name=projects/*/locations/*/jobs/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/jobs/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_job(request, metadata)
             pb_request = batch.GetJobRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -750,19 +864,24 @@ class BatchServiceRestTransport(BatchServiceTransport):
         def __hash__(self):
             return hash("GetTask")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: batch.GetTaskRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> task.Task:
+        def __call__(
+            self,
+            request: batch.GetTaskRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> task.Task:
             r"""Call the get task method over HTTP.
 
             Args:
@@ -779,35 +898,38 @@ class BatchServiceRestTransport(BatchServiceTransport):
                     A Cloud Batch task.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{name=projects/*/locations/*/jobs/*/taskGroups/*/tasks/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/jobs/*/taskGroups/*/tasks/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_task(request, metadata)
             pb_request = batch.GetTaskRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -826,12 +948,14 @@ class BatchServiceRestTransport(BatchServiceTransport):
         def __hash__(self):
             return hash("ListJobs")
 
-        def __call__(self,
-                request: batch.ListJobsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> batch.ListJobsResponse:
+        def __call__(
+            self,
+            request: batch.ListJobsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> batch.ListJobsResponse:
             r"""Call the list jobs method over HTTP.
 
             Args:
@@ -848,34 +972,37 @@ class BatchServiceRestTransport(BatchServiceTransport):
                     ListJob Response.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{parent=projects/*/locations/*}/jobs',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*}/jobs",
+                },
             ]
             request, metadata = self._interceptor.pre_list_jobs(request, metadata)
             pb_request = batch.ListJobsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -894,19 +1021,24 @@ class BatchServiceRestTransport(BatchServiceTransport):
         def __hash__(self):
             return hash("ListTasks")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: batch.ListTasksRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> batch.ListTasksResponse:
+        def __call__(
+            self,
+            request: batch.ListTasksRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> batch.ListTasksResponse:
             r"""Call the list tasks method over HTTP.
 
             Args:
@@ -923,35 +1055,38 @@ class BatchServiceRestTransport(BatchServiceTransport):
                     ListTasks Response.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{parent=projects/*/locations/*/jobs/*/taskGroups/*}/tasks',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*/jobs/*/taskGroups/*}/tasks",
+                },
             ]
             request, metadata = self._interceptor.pre_list_tasks(request, metadata)
             pb_request = batch.ListTasksRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -967,64 +1102,56 @@ class BatchServiceRestTransport(BatchServiceTransport):
             return resp
 
     @property
-    def create_job(self) -> Callable[
-            [batch.CreateJobRequest],
-            gcb_job.Job]:
+    def create_job(self) -> Callable[[batch.CreateJobRequest], gcb_job.Job]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateJob(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateJob(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_job(self) -> Callable[
-            [batch.DeleteJobRequest],
-            operations_pb2.Operation]:
+    def delete_job(
+        self,
+    ) -> Callable[[batch.DeleteJobRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteJob(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteJob(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_job(self) -> Callable[
-            [batch.GetJobRequest],
-            job.Job]:
+    def get_job(self) -> Callable[[batch.GetJobRequest], job.Job]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetJob(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetJob(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_task(self) -> Callable[
-            [batch.GetTaskRequest],
-            task.Task]:
+    def get_task(self) -> Callable[[batch.GetTaskRequest], task.Task]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetTask(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetTask(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_jobs(self) -> Callable[
-            [batch.ListJobsRequest],
-            batch.ListJobsResponse]:
+    def list_jobs(self) -> Callable[[batch.ListJobsRequest], batch.ListJobsResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListJobs(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListJobs(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_tasks(self) -> Callable[
-            [batch.ListTasksRequest],
-            batch.ListTasksResponse]:
+    def list_tasks(self) -> Callable[[batch.ListTasksRequest], batch.ListTasksResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListTasks(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListTasks(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def get_location(self):
-        return self._GetLocation(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetLocation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _GetLocation(BatchServiceRestStub):
-        def __call__(self,
-            request: locations_pb2.GetLocationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> locations_pb2.Location:
+        def __call__(
+            self,
+            request: locations_pb2.GetLocationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> locations_pb2.Location:
 
             r"""Call the get location method over HTTP.
 
@@ -1041,26 +1168,26 @@ class BatchServiceRestTransport(BatchServiceTransport):
                 locations_pb2.Location: Response from GetLocation method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{name=projects/*/locations/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*}",
+                },
             ]
 
             request, metadata = self._interceptor.pre_get_location(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1081,15 +1208,17 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
     @property
     def list_locations(self):
-        return self._ListLocations(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListLocations(self._session, self._host, self._interceptor)  # type: ignore
 
     class _ListLocations(BatchServiceRestStub):
-        def __call__(self,
-            request: locations_pb2.ListLocationsRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> locations_pb2.ListLocationsResponse:
+        def __call__(
+            self,
+            request: locations_pb2.ListLocationsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> locations_pb2.ListLocationsResponse:
 
             r"""Call the list locations method over HTTP.
 
@@ -1106,26 +1235,26 @@ class BatchServiceRestTransport(BatchServiceTransport):
                 locations_pb2.ListLocationsResponse: Response from ListLocations method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{name=projects/*}/locations',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*}/locations",
+                },
             ]
 
             request, metadata = self._interceptor.pre_list_locations(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1146,15 +1275,17 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
     @property
     def get_iam_policy(self):
-        return self._GetIamPolicy(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetIamPolicy(self._session, self._host, self._interceptor)  # type: ignore
 
     class _GetIamPolicy(BatchServiceRestStub):
-        def __call__(self,
-            request: iam_policy_pb2.GetIamPolicyRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> policy_pb2.Policy:
+        def __call__(
+            self,
+            request: iam_policy_pb2.GetIamPolicyRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> policy_pb2.Policy:
 
             r"""Call the get iam policy method over HTTP.
 
@@ -1171,34 +1302,34 @@ class BatchServiceRestTransport(BatchServiceTransport):
                 policy_pb2.Policy: Response from GetIamPolicy method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/jobs/*}:getIamPolicy',
-            },
-{
-                'method': 'get',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/tasks/*}:getIamPolicy',
-            },
-{
-                'method': 'get',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/nodes/*}:getIamPolicy',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{resource=projects/*/locations/*/jobs/*}:getIamPolicy",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{resource=projects/*/locations/*/tasks/*}:getIamPolicy",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{resource=projects/*/locations/*/nodes/*}:getIamPolicy",
+                },
             ]
 
             request, metadata = self._interceptor.pre_get_iam_policy(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1219,15 +1350,17 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
     @property
     def set_iam_policy(self):
-        return self._SetIamPolicy(self._session, self._host, self._interceptor) # type: ignore
+        return self._SetIamPolicy(self._session, self._host, self._interceptor)  # type: ignore
 
     class _SetIamPolicy(BatchServiceRestStub):
-        def __call__(self,
-            request: iam_policy_pb2.SetIamPolicyRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> policy_pb2.Policy:
+        def __call__(
+            self,
+            request: iam_policy_pb2.SetIamPolicyRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> policy_pb2.Policy:
 
             r"""Call the set iam policy method over HTTP.
 
@@ -1244,38 +1377,38 @@ class BatchServiceRestTransport(BatchServiceTransport):
                 policy_pb2.Policy: Response from SetIamPolicy method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/jobs/*}:setIamPolicy',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/tasks/*}:setIamPolicy',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/nodes/*}:setIamPolicy',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/jobs/*}:setIamPolicy",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/tasks/*}:setIamPolicy",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/nodes/*}:setIamPolicy",
+                    "body": "*",
+                },
             ]
 
             request, metadata = self._interceptor.pre_set_iam_policy(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            body = json.loads(json.dumps(transcoded_request['body']))
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            body = json.loads(json.dumps(transcoded_request["body"]))
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1297,15 +1430,17 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
     @property
     def test_iam_permissions(self):
-        return self._TestIamPermissions(self._session, self._host, self._interceptor) # type: ignore
+        return self._TestIamPermissions(self._session, self._host, self._interceptor)  # type: ignore
 
     class _TestIamPermissions(BatchServiceRestStub):
-        def __call__(self,
-            request: iam_policy_pb2.TestIamPermissionsRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> iam_policy_pb2.TestIamPermissionsResponse:
+        def __call__(
+            self,
+            request: iam_policy_pb2.TestIamPermissionsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> iam_policy_pb2.TestIamPermissionsResponse:
 
             r"""Call the test iam permissions method over HTTP.
 
@@ -1322,38 +1457,40 @@ class BatchServiceRestTransport(BatchServiceTransport):
                 iam_policy_pb2.TestIamPermissionsResponse: Response from TestIamPermissions method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/jobs/*}:testIamPermissions',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/tasks/*}:testIamPermissions',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1alpha/{resource=projects/*/locations/*/nodes/*}:testIamPermissions',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/jobs/*}:testIamPermissions",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/tasks/*}:testIamPermissions",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{resource=projects/*/locations/*/nodes/*}:testIamPermissions",
+                    "body": "*",
+                },
             ]
 
-            request, metadata = self._interceptor.pre_test_iam_permissions(request, metadata)
+            request, metadata = self._interceptor.pre_test_iam_permissions(
+                request, metadata
+            )
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            body = json.loads(json.dumps(transcoded_request['body']))
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            body = json.loads(json.dumps(transcoded_request["body"]))
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1375,15 +1512,17 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
     @property
     def cancel_operation(self):
-        return self._CancelOperation(self._session, self._host, self._interceptor) # type: ignore
+        return self._CancelOperation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _CancelOperation(BatchServiceRestStub):
-        def __call__(self,
-            request: operations_pb2.CancelOperationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> None:
+        def __call__(
+            self,
+            request: operations_pb2.CancelOperationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> None:
 
             r"""Call the cancel operation method over HTTP.
 
@@ -1397,28 +1536,30 @@ class BatchServiceRestTransport(BatchServiceTransport):
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1alpha/{name=projects/*/locations/*/operations/*}:cancel',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/locations/*/operations/*}:cancel",
+                    "body": "*",
+                },
             ]
 
-            request, metadata = self._interceptor.pre_cancel_operation(request, metadata)
+            request, metadata = self._interceptor.pre_cancel_operation(
+                request, metadata
+            )
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            body = json.loads(json.dumps(transcoded_request['body']))
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            body = json.loads(json.dumps(transcoded_request["body"]))
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1437,15 +1578,17 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
     @property
     def delete_operation(self):
-        return self._DeleteOperation(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteOperation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _DeleteOperation(BatchServiceRestStub):
-        def __call__(self,
-            request: operations_pb2.DeleteOperationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> None:
+        def __call__(
+            self,
+            request: operations_pb2.DeleteOperationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> None:
 
             r"""Call the delete operation method over HTTP.
 
@@ -1459,26 +1602,28 @@ class BatchServiceRestTransport(BatchServiceTransport):
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1alpha/{name=projects/*/locations/*/operations/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/locations/*/operations/*}",
+                },
             ]
 
-            request, metadata = self._interceptor.pre_delete_operation(request, metadata)
+            request, metadata = self._interceptor.pre_delete_operation(
+                request, metadata
+            )
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1496,15 +1641,17 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
     @property
     def get_operation(self):
-        return self._GetOperation(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetOperation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _GetOperation(BatchServiceRestStub):
-        def __call__(self,
-            request: operations_pb2.GetOperationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: operations_pb2.GetOperationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
 
             r"""Call the get operation method over HTTP.
 
@@ -1521,26 +1668,26 @@ class BatchServiceRestTransport(BatchServiceTransport):
                 operations_pb2.Operation: Response from GetOperation method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{name=projects/*/locations/*/operations/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/operations/*}",
+                },
             ]
 
             request, metadata = self._interceptor.pre_get_operation(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1561,15 +1708,17 @@ class BatchServiceRestTransport(BatchServiceTransport):
 
     @property
     def list_operations(self):
-        return self._ListOperations(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListOperations(self._session, self._host, self._interceptor)  # type: ignore
 
     class _ListOperations(BatchServiceRestStub):
-        def __call__(self,
-            request: operations_pb2.ListOperationsRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: float=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> operations_pb2.ListOperationsResponse:
+        def __call__(
+            self,
+            request: operations_pb2.ListOperationsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.ListOperationsResponse:
 
             r"""Call the list operations method over HTTP.
 
@@ -1586,26 +1735,26 @@ class BatchServiceRestTransport(BatchServiceTransport):
                 operations_pb2.ListOperationsResponse: Response from ListOperations method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1alpha/{name=projects/*/locations/*}/operations',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*}/operations",
+                },
             ]
 
             request, metadata = self._interceptor.pre_list_operations(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -1632,6 +1781,4 @@ class BatchServiceRestTransport(BatchServiceTransport):
         self._session.close()
 
 
-__all__=(
-    'BatchServiceRestTransport',
-)
+__all__ = ("BatchServiceRestTransport",)
