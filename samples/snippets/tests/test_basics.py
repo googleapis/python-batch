@@ -11,14 +11,12 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
-import random
 import time
 import uuid
 
 
 import google.auth
 from google.cloud import batch_v1
-from google.cloud import logging
 import pytest
 
 from ..create.create_with_container_no_mounting import create_container_job
@@ -47,7 +45,6 @@ def job_name():
 
 
 def _test_body(job: batch_v1.Job):
-    logging_client = logging.Client()
     start_time = time.time()
     try:
         while job.status.state in WAIT_STATES:
