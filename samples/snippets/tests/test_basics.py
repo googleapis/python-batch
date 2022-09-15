@@ -44,24 +44,29 @@ def job_name():
     return f"test-job-{uuid.uuid4().hex[:10]}"
 
 
-def _test_body(job: batch_v1.Job):
+def _test_body(test_job: batch_v1.Job):
     start_time = time.time()
     try:
-        while job.status.state in WAIT_STATES:
+        while test_job.status.state in WAIT_STATES:
             if time.time() - start_time > TIMEOUT:
                 pytest.fail("Timed out while waiting for job to complete!")
-            job = get_job(PROJECT, REGION, job.name.rsplit('/', maxsplit=1)[1])
+            test_job = get_job(PROJECT, REGION, test_job.name.rsplit('/', maxsplit=1)[1])
             time.sleep(5)
 
-        assert job.status.state in (batch_v1.JobStatus.State.SUCCEEDED, batch_v1.JobStatus.State.DELETION_IN_PROGRESS)
+        assert test_job.status.state in (batch_v1.JobStatus.State.SUCCEEDED,
+                                         batch_v1.JobStatus.State.DELETION_IN_PROGRESS)
 
         for job in list_jobs(PROJECT, REGION):
-            if job.uid == job.uid:
+            if test_job.uid == job.uid:
                 break
         else:
-            pytest.fail(f"Couldn't find job {job.uid} on the list of jobs.")
+            pytest.fail(f"Couldn't find job {test_job.uid} on the list of jobs.")
     finally:
-        delete_job(PROJECT, REGION, job.name.rsplit('/', maxsplit=1)[1])
+        delete_job(PROJECT, REGION, test_job.name.rsplit('/', maxsplit=1)[1]).result()
+
+    for job in list_jobs(PROJECT, REGION):
+        if job.uid == test_job.uid:
+            pytest.fail("The test job should be deleted at this point!")
 
 
 def test_script_job(job_name):
