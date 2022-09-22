@@ -15,18 +15,15 @@
 import uuid
 
 import google.auth
-from google.cloud import resourcemanager_v3
 from google.cloud import batch_v1
 from google.cloud import compute_v1
+from google.cloud import resourcemanager_v3
 import pytest
 
 
 from .test_basics import _test_body
 
 from ..create.create_with_template import create_script_job_with_template
-from ..delete.delete_job import delete_job
-from ..get.get_job import get_job
-from ..list.list_jobs import list_jobs
 
 PROJECT = google.auth.default()[1]
 
@@ -64,7 +61,6 @@ def instance_template():
 
     network_interface = compute_v1.NetworkInterface()
     network_interface.name = "global/networks/default"
-
 
     access = compute_v1.AccessConfig()
     access.type_ = compute_v1.AccessConfig.Type.ONE_TO_ONE_NAT.name
