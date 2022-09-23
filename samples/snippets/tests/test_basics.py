@@ -13,7 +13,7 @@
 #  limitations under the License.
 import time
 import uuid
-
+from typing import Callable
 
 import google.auth
 from google.cloud import batch_v1
@@ -44,7 +44,7 @@ def job_name():
     return f"test-job-{uuid.uuid4().hex[:10]}"
 
 
-def _test_body(test_job: batch_v1.Job):
+def _test_body(test_job: batch_v1.Job, additional_test: Callable = None):
     start_time = time.time()
     try:
         while test_job.status.state in WAIT_STATES:
@@ -61,6 +61,9 @@ def _test_body(test_job: batch_v1.Job):
                 break
         else:
             pytest.fail(f"Couldn't find job {test_job.uid} on the list of jobs.")
+
+        if additional_test:
+            additional_test()
     finally:
         delete_job(PROJECT, REGION, test_job.name.rsplit('/', maxsplit=1)[1]).result()
 
