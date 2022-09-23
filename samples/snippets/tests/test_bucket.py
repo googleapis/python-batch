@@ -11,7 +11,6 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
-import time
 import uuid
 
 
@@ -20,10 +19,8 @@ from google.cloud import batch_v1
 from google.cloud import storage
 import pytest
 
-from ..create.create_with_mounted_bucket import create_script_job_with_bucket
-from ..delete.delete_job import delete_job
-from ..get.get_job import get_job
 from .test_basics import _test_body
+from ..create.create_with_mounted_bucket import create_script_job_with_bucket
 
 PROJECT = google.auth.default()[1]
 REGION = 'europe-north1'

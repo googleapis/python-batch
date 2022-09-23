@@ -12,8 +12,8 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 import time
-import uuid
 from typing import Callable
+import uuid
 
 import google.auth
 from google.cloud import batch_v1
