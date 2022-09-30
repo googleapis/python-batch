@@ -36,6 +36,7 @@ WAIT_STATES = {
     batch_v1.JobStatus.State.QUEUED,
     batch_v1.JobStatus.State.RUNNING,
     batch_v1.JobStatus.State.SCHEDULED,
+    batch_v1.JobStatus.State.DELETION_IN_PROGRESS
 }
 
 
@@ -53,8 +54,7 @@ def _test_body(test_job: batch_v1.Job, additional_test: Callable = None):
             test_job = get_job(PROJECT, REGION, test_job.name.rsplit('/', maxsplit=1)[1])
             time.sleep(5)
 
-        assert test_job.status.state in (batch_v1.JobStatus.State.SUCCEEDED,
-                                         batch_v1.JobStatus.State.DELETION_IN_PROGRESS)
+        assert test_job.status.state == batch_v1.JobStatus.State.SUCCEEDED
 
         for job in list_jobs(PROJECT, REGION):
             if test_job.uid == job.uid:
