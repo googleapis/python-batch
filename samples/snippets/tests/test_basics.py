@@ -24,7 +24,9 @@ from ..create.create_with_script_no_mounting import create_script_job
 
 from ..delete.delete_job import delete_job
 from ..get.get_job import get_job
+from ..get.get_task import get_task
 from ..list.list_jobs import list_jobs
+from ..list.list_tasks import list_tasks
 
 PROJECT = google.auth.default()[1]
 REGION = 'europe-north1'
@@ -72,9 +74,17 @@ def _test_body(test_job: batch_v1.Job, additional_test: Callable = None):
             pytest.fail("The test job should be deleted at this point!")
 
 
+def _check_tasks(job_name):
+    tasks = list_tasks(PROJECT, REGION, job_name, 'group0')
+    assert len(list(tasks)) == 4
+    for i in range(4):
+        assert get_task(PROJECT, REGION, job_name, 'group0', i) is not None
+    print('Tasks tested')
+
+
 def test_script_job(job_name):
     job = create_script_job(PROJECT, REGION, job_name)
-    _test_body(job)
+    _test_body(job, additional_test=lambda: _check_tasks(job_name))
 
 
 def test_container_job(job_name):
