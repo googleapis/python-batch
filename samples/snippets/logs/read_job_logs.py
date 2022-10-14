@@ -26,10 +26,10 @@ def get_job_logs(project_id: str, job: batch_v1.Job) -> Generator[logging.TextEn
     # After completing all of your requests, call the "__exit__()" method to safely
     # clean up any remaining background resources. Alternatively, use the client as
     # a context manager.
-    with logging.Client(project=project_id) as log_client:
-        logger = log_client.logger("batch_task_logs")
+    log_client = logging.Client(project=project_id)
+    logger = log_client.logger("batch_task_logs")
 
-        yield from logger.list_entries(filter_=f"labels.job_uid={job.uid}")
+    yield from logger.list_entries(filter_=f"labels.job_uid={job.uid}")
 
 
 def print_job_logs(project_id: str, job: batch_v1.Job) -> NoReturn:
