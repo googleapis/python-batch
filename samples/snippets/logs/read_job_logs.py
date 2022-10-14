@@ -21,10 +21,15 @@ from google.cloud import logging
 
 
 def get_job_logs(project_id: str, job: batch_v1.Job) -> Generator[logging.TextEntry, None, None]:
-    log_client = logging.Client(project=project_id)
-    logger = log_client.logger("batch_task_logs")
+    # Initialize client that will be used to send requests across threads. This
+    # client only needs to be created once, and can be reused for multiple requests.
+    # After completing all of your requests, call the "__exit__()" method to safely
+    # clean up any remaining background resources. Alternatively, use the client as
+    # a context manager.
+    with logging.Client(project=project_id) as log_client:
+        logger = log_client.logger("batch_task_logs")
 
-    yield from logger.list_entries(filter_=f"labels.job_uid={job.uid}")
+        yield from logger.list_entries(filter_=f"labels.job_uid={job.uid}")
 
 
 def print_job_logs(project_id: str, job: batch_v1.Job) -> NoReturn:
