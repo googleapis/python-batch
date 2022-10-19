@@ -85,8 +85,6 @@ def _check_tasks(job_name):
 
 def _check_logs(job):
     logs = list(get_job_logs(PROJECT, job))
-    import pprint
-    pprint.pprint(logs)
     assert len(logs) == 4
     assert all(log_msg.payload.startswith("STDOUT") for log_msg in logs)
 
