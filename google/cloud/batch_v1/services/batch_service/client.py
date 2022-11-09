@@ -17,17 +17,17 @@ from collections import OrderedDict
 import os
 import re
 from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
-import pkg_resources
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
 from google.api_core import gapic_v1
 from google.api_core import retry as retries
 from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.exceptions import MutualTLSChannelError  # type: ignore
 from google.auth.transport import mtls  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth.exceptions import MutualTLSChannelError  # type: ignore
 from google.oauth2 import service_account  # type: ignore
+import pkg_resources
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -36,18 +36,20 @@ except AttributeError:  # pragma: NO COVER
 
 from google.api_core import operation  # type: ignore
 from google.api_core import operation_async  # type: ignore
-from google.cloud.batch_v1.services.batch_service import pagers
-from google.cloud.batch_v1.types import batch
-from google.cloud.batch_v1.types import job
-from google.cloud.batch_v1.types import job as gcb_job
-from google.cloud.batch_v1.types import task
 from google.cloud.location import locations_pb2  # type: ignore
 from google.iam.v1 import iam_policy_pb2  # type: ignore
 from google.iam.v1 import policy_pb2  # type: ignore
 from google.longrunning import operations_pb2
 from google.protobuf import empty_pb2  # type: ignore
 from google.protobuf import timestamp_pb2  # type: ignore
-from .transports.base import BatchServiceTransport, DEFAULT_CLIENT_INFO
+
+from google.cloud.batch_v1.services.batch_service import pagers
+from google.cloud.batch_v1.types import batch
+from google.cloud.batch_v1.types import job
+from google.cloud.batch_v1.types import job as gcb_job
+from google.cloud.batch_v1.types import task
+
+from .transports.base import DEFAULT_CLIENT_INFO, BatchServiceTransport
 from .transports.grpc import BatchServiceGrpcTransport
 from .transports.grpc_asyncio import BatchServiceGrpcAsyncIOTransport
 from .transports.rest import BatchServiceRestTransport
