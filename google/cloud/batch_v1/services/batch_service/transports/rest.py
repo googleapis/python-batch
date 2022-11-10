@@ -483,10 +483,10 @@ class BatchServiceRestTransport(BatchServiceTransport):
         self,
         *,
         host: str = "batch.googleapis.com",
-        credentials: ga_credentials.Credentials = None,
-        credentials_file: str = None,
-        scopes: Sequence[str] = None,
-        client_cert_source_for_mtls: Callable[[], Tuple[bytes, bytes]] = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
         quota_project_id: Optional[str] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
         always_use_jwt_access: Optional[bool] = False,
@@ -631,7 +631,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: batch.CreateJobRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> gcb_job.Job:
             r"""Call the create job method over HTTP.
@@ -714,7 +714,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: batch.DeleteJobRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> operations_pb2.Operation:
             r"""Call the delete job method over HTTP.
@@ -798,7 +798,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: batch.GetJobRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> job.Job:
             r"""Call the get job method over HTTP.
@@ -882,7 +882,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: batch.GetTaskRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> task.Task:
             r"""Call the get task method over HTTP.
@@ -956,7 +956,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: batch.ListJobsRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> batch.ListJobsResponse:
             r"""Call the list jobs method over HTTP.
@@ -1039,7 +1039,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: batch.ListTasksRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> batch.ListTasksResponse:
             r"""Call the list tasks method over HTTP.
@@ -1152,7 +1152,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: locations_pb2.GetLocationRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> locations_pb2.Location:
 
@@ -1219,7 +1219,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: locations_pb2.ListLocationsRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> locations_pb2.ListLocationsResponse:
 
@@ -1286,7 +1286,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: iam_policy_pb2.GetIamPolicyRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> policy_pb2.Policy:
 
@@ -1361,7 +1361,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: iam_policy_pb2.SetIamPolicyRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> policy_pb2.Policy:
 
@@ -1441,7 +1441,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: iam_policy_pb2.TestIamPermissionsRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> iam_policy_pb2.TestIamPermissionsResponse:
 
@@ -1523,7 +1523,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: operations_pb2.CancelOperationRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> None:
 
@@ -1589,7 +1589,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: operations_pb2.DeleteOperationRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> None:
 
@@ -1652,7 +1652,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: operations_pb2.GetOperationRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> operations_pb2.Operation:
 
@@ -1719,7 +1719,7 @@ class BatchServiceRestTransport(BatchServiceTransport):
             request: operations_pb2.ListOperationsRequest,
             *,
             retry: OptionalRetry = gapic_v1.method.DEFAULT,
-            timeout: float = None,
+            timeout: Optional[float] = None,
             metadata: Sequence[Tuple[str, str]] = (),
         ) -> operations_pb2.ListOperationsResponse:
 
